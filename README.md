@@ -1,0 +1,19 @@
+- 博客地址：[CSDN](https://blog.csdn.net/yangshuaionline)
+- 仓库地址：[GitHub](https://github.com/yangshuaionline/YsSpringBoot)
+- 目录结构：
+
+    -   java
+        - common：公共文件，用于存放配置类，工具类
+        - controller：控制层，处理用户输入请求
+        - dao：持久化层，提供数据表存取机制，主要是 ORM 框架实现以对象-关系数据库的映射
+        - entity：模型层，存放实体类
+        - service：数据服务接口
+        - serviceimpl：数据服务实现层
+        - utils：工具类   
+        - application.class：启动类
+        - ServletInitializer.class：替代web.xml
+    -   resources
+        - static：用于存放静态html、css、js、图片等资源
+        - templates：用于存放动态html
+        - application.properties：项目配置文件
+        - banner.txt：修改banner
