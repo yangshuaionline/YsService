@@ -1,0 +1,7 @@
+// 日志
+package log;
+
+// 提交评论
+message comment_C {
+    optional string msg = 1; // 评论内容
+}

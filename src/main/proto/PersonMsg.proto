@@ -1,0 +1,14 @@
+
+syntax = "proto3";
+package grace.proto.msg;
+message Person {
+	string id = 1;
+	string name = 2;
+	string email = 3;
+}
+
+message P2 {
+	string id2 = 1;
+	string name2 = 2;
+	string email2 = 3;
+}

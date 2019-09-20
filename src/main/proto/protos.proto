@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package protos;
+
+message UserCache {
+    uint32	UID		= 1;	// 用户ID
+	string	Name	= 2;	// 昵称
+	int32	Head	= 3;	// 头像id
+	int32	VIP 	= 4;	// 玩家VIP等级
+}
+
+message Resource {
+	int32 Type = 1;	// 资源类型
+	uint32 Num = 2;	// 资源数量
+}
+
+message Resources {
+	repeated Resource Add = 1;	// 添加的资源
+	repeated Resource Del = 2;	// 减少的资源
+	repeated Resource All = 3;	// 总的资源
+}
