@@ -22,7 +22,8 @@ import java.util.Base64;
 @RequestMapping("/test")
 public class TestController {
     private static String UPLOAD_PATH = "/Users/mac/img/";
-    @RequestMapping("getResult")
+    private static String WECAT_RES_PATH = "/Users/mac/Desktop/res/";
+    @RequestMapping("/getResult")
     public String home(){
         return "Hello World";
     }
@@ -49,7 +50,6 @@ public class TestController {
         return "";
     }
 
-
     //使用流将图片输出
     @GetMapping("/getImage/{name}")
     public void getImage(HttpServletResponse response, @PathVariable("name") String name) throws IOException {
@@ -61,6 +61,22 @@ public class TestController {
         outputStream.close();
     }
 
+    //微信小程序获取res文件（分为.json文件和.png文件）
+    @RequestMapping("/getRes/res/{name1}/{name2}/{name3}")
+    public void getRes(HttpServletResponse response
+            ,@PathVariable("name1") String name1
+            ,@PathVariable("name2") String name2
+            ,@PathVariable("name3") String name3)throws IOException{
+        //遍历文件夹，找到最底层
+        response.setContentType("application/octet-stream;charset=utf-8");
+        response.setHeader("Content-Disposition", "inline; filename=girls.png");
+        ServletOutputStream outputStream = response.getOutputStream();
+        //http://localhost:8888/test/getRes
+        System.out.print(name1+"/"+name2+"/"+name3+"\n");
+        outputStream.write(Files.readAllBytes(Paths.get(WECAT_RES_PATH+name1+"/"+name2+"/").resolve(name3)));
+        outputStream.flush();
+        outputStream.close();
+    }
 
     //测试protobuf数据的接口
     @PostMapping("/protobuf")
