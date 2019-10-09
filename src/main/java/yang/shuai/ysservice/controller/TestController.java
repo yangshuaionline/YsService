@@ -17,7 +17,6 @@ import java.util.Base64;
 /**
  * 前端控制层
  * **/
-
 @RestController
 @RequestMapping("/test")
 public class TestController {
