@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  * 跳转页面
  * */
 @Controller
-public class UserController {
+public class JumpPageController {
     /**
      * 跳转html页面详细配置：
      * https://blog.csdn.net/yangshuaionline/article/details/90447754
@@ -28,7 +28,7 @@ public class UserController {
     @RequestMapping("/jsp")
     public String hello() {
         System.out.print("jsp\n");
-        return "test_jsp";
+        return "test_parameter";
     }
 
 }
