@@ -1,17 +1,10 @@
 package yang.shuai.ysservice;
 
-//import org.apache.coyote.http11.AbstractHttp11Protocol;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
-//添加了之后会找不到路径
-//@MapperScan("yang.shuai.ysservice.service")//解决controller中引用service爆红
-//@ComponentScan(basePackages = {"yang.shuai.ysservice.service"})//解决controller中引用service爆红
+@MapperScan("yang.shuai.ysservice.mapper")//扫描调用mapper的class文件
 @SpringBootApplication
 public class YsserviceApplication {
 

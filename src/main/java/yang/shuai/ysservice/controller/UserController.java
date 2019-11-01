@@ -1,34 +1,21 @@
 package yang.shuai.ysservice.controller;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import yang.shuai.ysservice.service.UserService;
 
 
 /**
- * 跳转页面
+ * user
  * */
-@Controller
-public class UserController {
-    /**
-     * 跳转html页面详细配置：
-     * https://blog.csdn.net/yangshuaionline/article/details/90447754
-     * */
-    @GetMapping("/html")
-    public String index(HttpServletRequest request){
-        System.out.print("html\n");
-        request.setAttribute("key","hello world");
-        return "/test_html";
+@RestController//controller标识
+@RequestMapping("/abc")//请求路径
+public class UserController{
+    @Autowired//自动初始化对象
+    UserService userService;
+    @GetMapping("/getUser/{id}")//请求路径
+    public String getUser(@PathVariable("id") int id){
+        System.out.print("id = "+id);
+        return userService.Sel(id).toString();
     }
-    /**
-     * 跳转jsp页面详细配置：
-     * https://blog.csdn.net/yangshuaionline/article/details/90447754
-     * */
-    @RequestMapping("/jsp")
-    public String hello() {
-        System.out.print("jsp\n");
-        return "test_jsp";
-    }
-
 }

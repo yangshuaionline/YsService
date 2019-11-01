@@ -1,11 +1,21 @@
 package yang.shuai.ysservice.dao;
 
+import org.json.JSONObject;
+
 public class User {
     private int id;
     private String head_pic;
     private String user_name;
     private String account;
     private String pw;
+
+    @Override
+    public String toString() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("account",account);
+        jsonObject.put("pw",pw);
+        return jsonObject.toString();
+    }
 
     public int getId() {
         return id;

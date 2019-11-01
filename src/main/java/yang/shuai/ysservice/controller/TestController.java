@@ -3,7 +3,8 @@ package yang.shuai.ysservice.controller;
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import yang.shuai.ysservice.domain.PersonMsg;
+import yang.shuai.ysservice.dao.User;
+import yang.shuai.ysservice.proto.PersonMsg;
 import yang.shuai.ysservice.utils.UpPhotoNameUtils;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +23,15 @@ import java.util.Base64;
 public class TestController {
     private static String UPLOAD_PATH = "/Users/mac/img/";
     private static String WECAT_RES_PATH = "/Users/mac/Desktop/res/";
+
     @RequestMapping("/getResult")
-    public String home(){
-        return "Hello World";
+    public String home(String account,String pw){
+        System.out.print(account);
+        System.out.print(pw);
+        User user = new User();
+        user.setAccount(account);
+        user.setPw(pw);
+        return user.toString();
     }
     /**
      * 上传图片接口
@@ -70,7 +77,7 @@ public class TestController {
         response.setContentType("application/octet-stream;charset=utf-8");
         response.setHeader("Content-Disposition", "inline; filename=girls.png");
         ServletOutputStream outputStream = response.getOutputStream();
-        //http://localhost:8888/test/getRes
+        //http://localhost:8888/test/getRes/res/{name1}/{name2}/{name3}
         System.out.print(name1+"/"+name2+"/"+name3+"\n");
         outputStream.write(Files.readAllBytes(Paths.get(WECAT_RES_PATH+name1+"/"+name2+"/").resolve(name3)));
         outputStream.flush();
